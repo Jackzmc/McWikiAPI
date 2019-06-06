@@ -1,0 +1,3 @@
+{
+    "ignore":["apify_storage","node_modules","cache"]
+}
