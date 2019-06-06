@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 
@@ -75,6 +76,8 @@ async function runScrape(url) {
 
             const title = $("title").text();
             const subject = $('#firstHeading').text();
+
+            const image = $('.notaninfobox .image > img').prop('src')
             // Do some data extraction from the page with Cheerio.
             const body_selector = $('#content #mw-content-text .mw-parser-output');
             const subtitle = body_selector.children('p').first().text().replace(/\n/g,'')
@@ -87,6 +90,7 @@ async function runScrape(url) {
             resolve({
                 url,
                 title,
+                image,
                 subject,
                 subtitle,
                 content,
