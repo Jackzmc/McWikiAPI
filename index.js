@@ -12,7 +12,9 @@ const cheerio = require('cheerio');
 const QUERY_SEARCH = [
     "TNT"
 ]
-
+app.get('/mcwiki',(req,res) => {
+    res.send("<title>MCWikiAPI</title><h1>Minecraft Wiki Scrapper</h1><p>Make a GET request to /mcwiki/<query>. For example /mcwiki/TNT to get a JSON string of the jist of the wiki page.")
+})
 app.get('/mcwiki/:query',async(req,res) => {
     getMCWiki(req.params.query,{force:req.query.force==true})
     .then(result => {
